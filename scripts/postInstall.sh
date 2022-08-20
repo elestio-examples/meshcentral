@@ -4,10 +4,8 @@ set -o allexport; source .env; set +o allexport;
 echo "Waiting for MeshCentral ot be ready"
 sleep 10s;
 
-app_target=$(docker-compose port app 8086)
-
 #create admin user
-curl --insecure https://$app_target \
+curl --insecure https://$HOSTNAME \
   -H 'content-type: application/x-www-form-urlencoded' \
   --data-raw 'action=createaccount&username='"$ADMIN_LOGIN"'&email='"$ADMIN_EMAIL"'&password1='"$ADMIN_PASSWORD"'&password2='"$ADMIN_PASSWORD"'&apasswordhint=&anewaccountpass=&anewaccountcaptcha=&urlargs=&captchaargs=' \
   --compressed
