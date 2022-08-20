@@ -2,7 +2,7 @@
 set -o allexport; source .env; set +o allexport;
 
 echo "Waiting for MeshCentral ot be ready"
-sleep 10s;
+sleep 30s;
 
 #create admin user
 curl --insecure https://$HOSTNAME \

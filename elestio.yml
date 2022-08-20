@@ -1,6 +1,6 @@
 ports:
   - protocol: "HTTPS"
-    targetProtocol: "HTTP"
+    targetProtocol: "HTTPS"
     listeningPort: "443"
     targetPort: "8086"
     targetIP: "172.17.0.1"
