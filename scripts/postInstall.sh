@@ -1,11 +1,12 @@
 #set env vars
 set -o allexport; source .env; set +o allexport;
 
-echo "Waiting for MeshCentral ot be ready"
-sleep 30s;
+echo "Waiting for MeshCentral to be ready"
+sleep 15s;
 
 #create admin user
-curl --insecure https://$HOSTNAME \
+app_target=$(docker-compose port meshcentral 443)
+curl --insecure https://$app_target \
   -H 'content-type: application/x-www-form-urlencoded' \
   --data-raw 'action=createaccount&username='"$ADMIN_LOGIN"'&email='"$ADMIN_EMAIL"'&password1='"$ADMIN_PASSWORD"'&password2='"$ADMIN_PASSWORD"'&apasswordhint=&anewaccountpass=&anewaccountcaptcha=&urlargs=&captchaargs=' \
   --compressed
